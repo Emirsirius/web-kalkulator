@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fakultet Kalkulator</title>
+</head>
+<body>
+    <h1>Fakultet Kalkulator</h1>
+    <input type="number" id="number" placeholder="Skriv inn et tall">
+    <button onclick="calculate()">Beregn Fakultet</button>
+    <p id="result"></p>
+
+    <script type="module">
+        import { fakultet } from './fakultet.js';
+
+        function calculate() {
+            const number = document.getElementById('number').value;
+            const result = fakultet(Number(number));
+            document.getElementById('result').innerText = `Fakultet av ${number} er ${result}`;
+        }
+    </script>
+</body>
+</html>
