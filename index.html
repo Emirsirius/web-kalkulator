@@ -4,21 +4,35 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Fakultet Kalkulator</title>
+    <style>
+        .factorial-input {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        .factorial-symbol {
+            font-size: 20px;
+            font-weight: bold;
+        }
+    </style>
 </head>
 <body>
     <h1>Fakultet Kalkulator</h1>
-    <input type="number" id="number" placeholder="Skriv inn et tall">
-    <button onclick="calculate()">Beregn Fakultet</button>
+    <div class="factorial-input">
+        <input type="number" id="number" placeholder="Skriv inn et tall">
+        <span class="factorial-symbol">!</span>
+    </div>
+    <button id="calculateBtn">Beregn Fakultet</button>
     <p id="result"></p>
 
     <script type="module">
         import { fakultet } from './fakultet.js';
 
-        function calculate() {
+        document.getElementById('calculateBtn').addEventListener('click', () => {
             const number = document.getElementById('number').value;
             const result = fakultet(Number(number));
-            document.getElementById('result').innerText = `Fakultet av ${number} er ${result}`;
-        }
+            document.getElementById('result').innerText = `${number}! = ${result}`;
+        });
     </script>
 </body>
 </html>
