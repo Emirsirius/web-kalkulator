@@ -3,35 +3,72 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fakultet Kalkulator</title>
+    <title>Kalkulator</title>
     <style>
         .factorial-input {
             display: flex;
             align-items: center;
             gap: 5px;
+            margin-bottom: 20px;
         }
         .factorial-symbol {
             font-size: 20px;
             font-weight: bold;
         }
+        .section {
+            margin-bottom: 30px;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
     </style>
 </head>
 <body>
-    <h1>Fakultet Kalkulator</h1>
-    <div class="factorial-input">
-        <input type="number" id="number" placeholder="Skriv inn et tall">
-        <span class="factorial-symbol">!</span>
+    <div class="section">
+        <h1>Fakultet Kalkulator</h1>
+        <div class="factorial-input">
+            <input type="number" id="number" placeholder="Skriv inn et tall">
+            <span class="factorial-symbol">!</span>
+        </div>
+        <button id="calculateBtn">Beregn Fakultet</button>
+        <p id="result"></p>
     </div>
-    <button id="calculateBtn">Beregn Fakultet</button>
-    <p id="result"></p>
+
+    <div class="section">
+        <h1>FizzBuzz Kalkulator</h1>
+        <input type="number" id="fizzbuzz-number" placeholder="Skriv inn et tall">
+        <button id="fizzbuzzBtn">Beregn FizzBuzz</button>
+        <p id="fizzbuzz-result"></p>
+    </div>
+
+    <div class="section">
+        <h1>Fibonacci Kalkulator</h1>
+        <input type="number" id="fibonacci-number" placeholder="Skriv inn et tall">
+        <button id="fibonacciBtn">Beregn Fibonacci</button>
+        <p id="fibonacci-result"></p>
+    </div>
 
     <script type="module">
         import { fakultet } from './fakultet.js';
+        import { fizzBuzz } from './fizzbuzz.js';
+        import { fibonacci } from './fibonacci.js';
 
         document.getElementById('calculateBtn').addEventListener('click', () => {
             const number = document.getElementById('number').value;
             const result = fakultet(Number(number));
             document.getElementById('result').innerText = `${number}! = ${result}`;
+        });
+
+        document.getElementById('fizzbuzzBtn').addEventListener('click', () => {
+            const number = document.getElementById('fizzbuzz-number').value;
+            const result = fizzBuzz(Number(number));
+            document.getElementById('fizzbuzz-result').innerText = `FizzBuzz av ${number} er ${result}`;
+        });
+
+        document.getElementById('fibonacciBtn').addEventListener('click', () => {
+            const number = document.getElementById('fibonacci-number').value;
+            const result = fibonacci(Number(number));
+            document.getElementById('fibonacci-result').innerText = `Fibonacci nummer ${number} er ${result}`;
         });
     </script>
 </body>
