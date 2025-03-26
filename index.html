@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web Kalkulator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .calculator-section {
+            margin-bottom: 20px;
+            padding: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .result {
+            margin-top: 10px;
+            font-weight: bold;
+        }
+        input[type="number"] {
+            padding: 5px;
+            margin-right: 10px;
+        }
+        button {
+            padding: 5px 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <h1>Web Kalkulator</h1>
+
+    <div class="calculator-section">
+        <h2>Fakultet</h2>
+        <input type="number" id="fakultetInput" min="0">
+        <button onclick="beregnFakultet()">Beregn</button>
+        <div id="fakultetResult" class="result"></div>
+    </div>
+
+    <div class="calculator-section">
+        <h2>FizzBuzz</h2>
+        <input type="number" id="fizzBuzzInput" min="1">
+        <button onclick="beregnFizzBuzz()">Beregn</button>
+        <div id="fizzBuzzResult" class="result"></div>
+    </div>
+
+    <div class="calculator-section">
+        <h2>Fibonacci</h2>
+        <input type="number" id="fibonacciInput" min="1">
+        <button onclick="beregnFibonacci()">Beregn</button>
+        <div id="fibonacciResult" class="result"></div>
+    </div>
+
+    <script type="module">
+        import { fakultet } from './fakultet.js';
+        import { fizzBuzz } from './fizzbuzz.js';
+        import { fibonacci } from './fibonacci.js';
+
+        window.beregnFakultet = function() {
+            const input = document.getElementById('fakultetInput');
+            const resultDiv = document.getElementById('fakultetResult');
+            const n = parseInt(input.value);
+            const result = fakultet(n);
+            resultDiv.textContent = result !== undefined ? `Fakultet av ${n} er ${result}` : 'Ugyldig input';
+        };
+
+        window.beregnFizzBuzz = function() {
+            const input = document.getElementById('fizzBuzzInput');
+            const resultDiv = document.getElementById('fizzBuzzResult');
+            const n = parseInt(input.value);
+            const result = fizzBuzz(n);
+            resultDiv.textContent = `FizzBuzz av ${n} er ${result}`;
+        };
+
+        window.beregnFibonacci = function() {
+            const input = document.getElementById('fibonacciInput');
+            const resultDiv = document.getElementById('fibonacciResult');
+            const n = parseInt(input.value);
+            const result = fibonacci(n);
+            resultDiv.textContent = result !== undefined ? `Fibonacci-tall nr ${n} er ${result}` : 'Ugyldig input';
+        };
+    </script>
+</body>
+</html>
