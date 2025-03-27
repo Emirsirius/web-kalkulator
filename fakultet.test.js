@@ -24,4 +24,4 @@ describe('fakultet', () => {
     test('returns undefined for negative numbers', () => {
         expect(fakultet(-1)).toBeUndefined();
     });
-})}
+})
